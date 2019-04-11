@@ -14,16 +14,18 @@ exports_ = {
         {
             resolve: `gatsby-transformer-remark`
         },
+        {
+            resolve: `gatsby-transformer-yaml`
+        }
     ]
 }
 
-const config = yaml.safeLoad(fs.readFileSync('config.yml', 'utf8'));
+const config = yaml.safeLoad(fs.readFileSync('./content/config.yml', 'utf8'));
 config.paths.forEach(element => {
     exports_.plugins.push({
         resolve: `gatsby-source-filesystem`,
         options: {
             path: `${__dirname}/${element}`,
-            name: "content-root",
         },
     })
 });

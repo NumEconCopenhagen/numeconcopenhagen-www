@@ -39,9 +39,8 @@ const styles = theme => ({
     toolbar: theme.mixins.toolbar,
 });
 
-function ClippedDrawer(props) {
+function Header(props) {
     const { classes, children } = props;
-
     return (
         <MuiThemeProvider theme={theme}>
             <div className={classes.root}>
@@ -88,8 +87,8 @@ function ClippedDrawer(props) {
     );
 }
 
-ClippedDrawer.propTypes = {
+Header.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ClippedDrawer);
+export default withStyles(styles)(Header);

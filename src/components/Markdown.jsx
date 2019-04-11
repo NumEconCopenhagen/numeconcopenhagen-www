@@ -14,9 +14,9 @@ export class Markdown extends Component {
         const remarkPlugins = [math, remark2rehype, katex, stringify]
         const remarkRenderers = {
             heading: props => <React.Fragment><Typography variant={`h${props.level + 1}`}>{props.children}</Typography><Divider style={{ margin: '8px 0px' }} /></React.Fragment>,
-            link: props => <Typography style={{ display: 'inline', fontWeight: 'inherit', 'fontSize': 16 }}><Link {...props}>{props.children}</Link></Typography>,
+            link: props => <Typography component="span" style={{ display: 'inline', fontWeight: 'inherit', 'fontSize': 16 }}><Link {...props}>{props.children}</Link></Typography>,
             paragraph: props => <Typography paragraph variant='body1' style={{ 'fontSize': 16, fontWeight: 'inherit' }} {...props}>{props.children}</Typography>,
-            listItem: props => <li><Typography {...props}>{props.children}</Typography></li>,
+            listItem: props => <li><Typography>{props.children}</Typography></li>,
             math:
                 function blockMath(node) {
                     return <BlockMath>{node.value}</BlockMath>;
