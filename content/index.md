@@ -62,6 +62,11 @@ While the course only focus on programming in Python, you will also be equipped 
 
 # Learning Outcomes
 
+## Learning Outcomes
+
+
+### Learning Outcomes
+
 **Knowledge:**
 
 * Describe the differences between data types (e.g.  strings, booleans, integers and floats)

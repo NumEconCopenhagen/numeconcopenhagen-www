@@ -15,11 +15,10 @@ export class index extends Component {
   }
   render() {
     const { data } = this.props
-    console.log(this.state)
     return (
       <div style={{ display: this.state.class }}>
         <Header>
-          <Typography variant="h2">{data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title}</Typography>
+          <Typography variant="h1">{data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title}</Typography>
           <Markdown>{data.allFile.edges[0].node.childMarkdownRemark.rawMarkdownBody}</Markdown>
         </Header>
       </div>

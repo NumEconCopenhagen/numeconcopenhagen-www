@@ -14,6 +14,20 @@ const theme = createMuiTheme({
             // contrastText: will be calculated to contrast with palette.primary.main
         },
     },
+    typography: {
+        h1: {
+            fontSize: '3rem',
+            paddingBottom: '8px'
+        },
+        h2: {
+            fontSize: '2.5rem',
+            paddingBottom: '6px'
+        },
+        h3: {
+            fontSize: '2rem',
+            paddingBottom: '4px'
+        }
+    }
 });
 const drawerWidth = 240;
 

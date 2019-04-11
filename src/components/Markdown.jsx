@@ -13,7 +13,7 @@ export class Markdown extends Component {
     render() {
         const remarkPlugins = [math, remark2rehype, katex, stringify]
         const remarkRenderers = {
-            heading: props => <React.Fragment><Typography variant={`h${props.level + 1}`}>{props.children}</Typography><Divider style={{ margin: '8px 0px' }} /></React.Fragment>,
+            heading: props => <React.Fragment><Typography variant={`h${props.level}`}>{props.children}</Typography><Divider style={{ margin: '8px 0px' }} /></React.Fragment>,
             link: props => <Typography component="span" style={{ display: 'inline', fontWeight: 'inherit', 'fontSize': 16 }}><Link {...props}>{props.children}</Link></Typography>,
             paragraph: props => <Typography paragraph variant='body1' style={{ 'fontSize': 16, fontWeight: 'inherit' }} {...props}>{props.children}</Typography>,
             listItem: props => <li><Typography>{props.children}</Typography></li>,
