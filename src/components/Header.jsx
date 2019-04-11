@@ -26,6 +26,9 @@ const theme = createMuiTheme({
         h3: {
             fontSize: '2rem',
             paddingBottom: '4px'
+        },
+        body1: {
+            fontSize: '1rem'
         }
     }
 });
