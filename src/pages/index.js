@@ -6,13 +6,23 @@ import Typography from "@material-ui/core/Typography"
 
 
 export class index extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { 'class': 'none' }
+  }
+  componentDidMount() {
+    this.setState({ 'class': 'block' })
+  }
   render() {
     const { data } = this.props
+    console.log(this.state)
     return (
-      <Header>
-        <Typography variant="h2">{data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title}</Typography>
-        <Markdown>{data.allFile.edges[0].node.childMarkdownRemark.rawMarkdownBody}</Markdown>
-      </Header>
+      <div style={{ display: this.state.class }}>
+        <Header>
+          <Typography variant="h2">{data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title}</Typography>
+          <Markdown>{data.allFile.edges[0].node.childMarkdownRemark.rawMarkdownBody}</Markdown>
+        </Header>
+      </div>
     )
   }
 }

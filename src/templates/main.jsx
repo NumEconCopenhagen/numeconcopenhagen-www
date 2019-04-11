@@ -9,7 +9,7 @@ export default ({ data }) => {
     return (
         <div>
             <Header>
-                <Typography variant="h2">{post.frontmatter.title}</Typography>
+                <Typography>{post.frontmatter.title}</Typography>
                 <Markdown>{post.rawMarkdownBody}</Markdown>
             </Header>
         </div>
