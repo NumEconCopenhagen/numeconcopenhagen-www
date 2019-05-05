@@ -1,29 +1,33 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import React, { Component } from 'react'
 import Header from '../components/Header'
 import "katex/dist/katex.min.css";
 import { graphql } from 'gatsby'
 import NotebookRender from "@nteract/notebook-render";
 
-const NotebookTemplate = props => {
-  const {
-    data: {
-      notebook,
-    }
-  } = props;
+export default class NotebookTemplate extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { 'class': 'none' }
+  }
+  componentDidMount() {
+    this.setState({ 'class': 'block' })
+  }
+  render() {
+    const {
+      data: {
+        notebook,
+      }
+    } = this.props;
 
-  return (
-    <Header>
-      <NotebookRender notebook={JSON.parse(notebook.internal.content)} />
-    </Header >
-  )
-};
-
-NotebookTemplate.propTypes = {
-  data: PropTypes.object.isRequired
-};
-
-export default NotebookTemplate;
+    return (
+      <div style={{ display: this.state.class }}>
+        <Header>
+          <NotebookRender notebook={JSON.parse(notebook.internal.content)} />
+        </Header >
+      </div>
+    )
+  }
+}
 
 //eslint-disable-next-line no-undef
 export const NotebookQuery = graphql`
