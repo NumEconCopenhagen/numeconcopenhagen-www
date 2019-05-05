@@ -15,12 +15,12 @@ export class index extends Component {
   }
   render() {
     const { data } = this.props
-    const a = fetch('https://facebook.github.io/react-native/movies.json')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        return responseJson;
-      });
-    console.log(a)
+    // const a = fetch('https://facebook.github.io/react-native/movies.json')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     return responseJson;
+    //   });
+    // console.log(a)
     return (
       <div style={{ display: this.state.class }}>
         <Header>
