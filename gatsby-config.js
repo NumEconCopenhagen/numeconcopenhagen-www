@@ -49,6 +49,9 @@ exports_ = {
         },
         {
             resolve: `@gatsby-contrib/gatsby-transformer-ipynb`
+        },
+        {
+            resolve: `gatsby-plugin-offline`
         }
     ]
 }

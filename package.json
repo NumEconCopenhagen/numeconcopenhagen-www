@@ -25,6 +25,7 @@
     "@nteract/records": "^1.0.4-alpha.0",
     "axios": "^0.18.0",
     "gatsby": "^2.3.16",
+    "gatsby-plugin-offline": "^2.1.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-source-graphql": "^2.0.18",
