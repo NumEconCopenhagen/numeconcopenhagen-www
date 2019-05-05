@@ -1,0 +1,31 @@
+title: NUMECONCOPENHAGEN
+urls: 
+  - title: "Home"
+    icon: "home"
+    url: "/"
+    weight: 5
+  - title: "Guides"
+    icon: "info"
+    url: "/guides"
+    weight: 10
+  - title: "Lectures"
+    icon: "assignment"
+    url: "/"
+    weight: 15
+  - title: "Exercises"
+    icon: "assignment"
+    url: "/"
+    weight: 20
+  - title: "Course Plan"
+    icon: "calendar_today"
+    url: "/course-plan"
+    weight: 25
+  - title: "Self-study"
+    icon: "school"
+    url: "/self-study"
+    weight: 30
+notebook:
+  - title: Lectures
+    notebooks:
+      - title: "Lecture 1"
+        url: ""

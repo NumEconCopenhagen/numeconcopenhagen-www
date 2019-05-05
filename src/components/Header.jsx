@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createMuiTheme, withStyles, MuiThemeProvider } from '@material-ui/core/styles'
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { AppBar, CssBaseline, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, CssBaseline, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Icon } from '@material-ui/core'
+import { graphql, StaticQuery } from 'gatsby';
 
 const theme = createMuiTheme({
     palette: {
@@ -58,49 +57,68 @@ const styles = theme => ({
 
 function Header(props) {
     const { classes, children } = props;
+    const query = graphql`
+    query {
+        allFile(filter: {relativePath: {eq: "config.yml"}, sourceInstanceName: {eq: "config"}}) {
+            edges {
+            node {
+                childConfigYaml {
+                title
+                urls {
+                    title
+                    icon
+                    url
+                    weight
+                }
+                }
+            }
+            }
+        }
+    }
+    `
     return (
-        <MuiThemeProvider theme={theme}>
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar position="fixed" className={classes.appBar}>
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit" noWrap style={{ fontFamily: 'VT323', fontSize: '32px' }}>
-                            NUMECONCOPENHAGEN
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    className={classes.drawer}
-                    variant="permanent"
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                >
-                    <div className={classes.toolbar} />
-                    <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Drawer>
-                <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    {children}
-                </main>
-            </div>
-        </MuiThemeProvider>
+        <StaticQuery query={query} render={data => (
+            <MuiThemeProvider theme={theme}>
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar position="fixed" className={classes.appBar}>
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" noWrap style={{ fontFamily: 'VT323', fontSize: '32px' }}>
+                                <Link color='inherit' underline='none' href='/'>{data.allFile.edges[0].node.childConfigYaml.title}</Link>
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer
+                        className={classes.drawer}
+                        variant="permanent"
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        <div className={classes.toolbar} />
+                        <List>
+                            {data.allFile.edges[0].node.childConfigYaml.urls.map((x) => (
+                                <ListItem button component="a" href={x.url} key={x.weight}>
+                                    <ListItemIcon>
+                                        <Icon>
+                                            {x.icon}
+                                        </Icon>
+                                    </ListItemIcon>
+                                    <ListItemText>
+                                        {x.title}
+                                    </ListItemText>
+                                </ListItem>
+
+                            ))}
+                        </List>
+                    </Drawer>
+                    <main className={classes.content}>
+                        <div className={classes.toolbar} />
+                        {children}
+                    </main>
+                </div>
+            </MuiThemeProvider>)}
+        />
     );
 }
 

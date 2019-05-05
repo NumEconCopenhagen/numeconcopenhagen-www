@@ -1,0 +1,6 @@
+[submodule "content/lectures-2019"]
+	path = content/lectures-2019
+	url = https://github.com/NumEconCopenhagen/lectures-2019
+[submodule "content/exercises-2019"]
+	path = content/exercises-2019
+	url = https://github.com/NumEconCopenhagen/exercises-2019
